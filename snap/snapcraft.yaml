@@ -8,26 +8,26 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
+apps:
+  lua-language-server:
+    command: bin/lua-language-server
+    plugs:
+      - network-bind
+      - home
+environment:
+  LLS_LOG_PATH: $SNAP_USER_DATA/log
+  LLS_META_PATH: $SNAP_USER_DATA/cache
+
 parts:
   lua-lsp:
     plugin: dump
     #source: https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$PLATFORM.tar.gz
-    #source: https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$CRAFT_PLATFORM.tar.gz
+    #source: https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-x64.tar.gz
     source:
-      - to amd64:
-        - https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-x64.tar.gz
-      - else:
-        - https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$CRAFT_ARCH_BUILD_FOR.tar.gz
+      - to amd64: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-x64.tar.gz"
+      - else: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$CRAFT_ARCH_BUILD_FOR.tar.gz"
     source-type: tar
-    override-pull: |
-      printenv
-      export PLATFORM="${CRAFT_PLATFORM}"
-      #craftctl default
 platforms:
   # Unfortunately does not work as expected
-  x64: 
-    build-on: amd64
-    build-for: amd64
+  amd64: 
   arm64:
-    build-on: amd64
-    build-for: arm64
