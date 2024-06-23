@@ -12,11 +12,10 @@ apps:
   lua-language-server:
     command: bin/lua-language-server
     plugs:
-      - network-bind
       - home
 environment:
   LLS_LOG_PATH: $SNAP_USER_DATA/log
-  LLS_META_PATH: $SNAP_USER_DATA/cache
+    #  LLS_META_PATH: $SNAP_USER_DATA/cache
 
 parts:
   lua-lsp:
