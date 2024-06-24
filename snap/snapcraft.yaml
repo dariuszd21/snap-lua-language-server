@@ -1,6 +1,7 @@
 name: lua-language-server
 base: core24
 version: '3.9.3'
+license: MIT
 summary:  A language server that offers Lua language support
 description: |
   The Lua language server provides various language features
@@ -8,8 +9,7 @@ description: |
   With nearly a million installs in Visual Studio Code,
   it is the most popular extension for Lua language support.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+confinement: strict
 
 apps:
   lua-language-server:
