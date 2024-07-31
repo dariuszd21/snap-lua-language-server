@@ -18,6 +18,7 @@ apps:
       - home
 environment:
   LLS_LOG_PATH: $SNAP_USER_DATA/log
+  LLS_META_PATH: $SNAP_USER_DATA/meta
 
 parts:
   lua-lsp:
