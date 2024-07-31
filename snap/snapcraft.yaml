@@ -23,6 +23,8 @@ environment:
 parts:
   lua-lsp:
     plugin: dump
+    build-attributes:
+     - enable-patchelf
     source:
       - to amd64: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-x64.tar.gz"
       - else: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$CRAFT_ARCH_BUILD_FOR.tar.gz"
