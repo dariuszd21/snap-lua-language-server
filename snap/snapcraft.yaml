@@ -22,13 +22,17 @@ environment:
 
 parts:
   lua-lsp:
-    plugin: dump
+    plugin: nil
     build-attributes:
      - enable-patchelf
-    source:
-      - to amd64: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-x64.tar.gz"
-      - else: "https://github.com/LuaLS/lua-language-server/releases/download/$CRAFT_PROJECT_VERSION/lua-language-server-$CRAFT_PROJECT_VERSION-linux-$CRAFT_ARCH_BUILD_FOR.tar.gz"
-    source-type: tar
+    build-packages:
+     - ninja-build
+    source: https://github.com/LuaLS/lua-language-server
+    source-type: git
+    source-tag: ${CRAFT_PROJECT_VERSION}
+    override-build: |
+      ./make.sh
+      cp -r {meta/,bin/,script/,locale/,LICENSE,changelog.md,debugger.lua,main.lua} ${CRAFT_PART_INSTALL}/
 platforms:
   amd64:
   arm64:
