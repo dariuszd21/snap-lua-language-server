@@ -1,8 +1,8 @@
 name: lua-language-server
 base: core24
-version: '3.9.3'
+version: "3.9.3"
 license: MIT
-summary:  A language server that offers Lua language support
+summary: A language server that offers Lua language support
 description: |
   The Lua language server provides various language features
   for Lua to make development easier and faster.
@@ -24,9 +24,9 @@ parts:
   lua-lsp:
     plugin: nil
     build-attributes:
-     - enable-patchelf
+      - enable-patchelf
     build-packages:
-     - ninja-build
+      - ninja-build
     source: https://github.com/LuaLS/lua-language-server
     source-type: git
     source-tag: ${CRAFT_PROJECT_VERSION}
